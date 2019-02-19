@@ -40,7 +40,7 @@ func sumVec(vec []int) int {
 }
 
 func main() {
-	/***** Start of profiling code block *****/
+	// ---- START CPU profiling
 	flag.Parse()
 	if *cpuprofile != "" {
 		f, err := os.Create(*cpuprofile)
@@ -52,7 +52,7 @@ func main() {
 		}
 		defer pprof.StopCPUProfile()
 	}
-	/***** End of profiling code block *****/
+	// ---- END CPU profiling
 
 	/* Start of code and function calls to profile */
 	vec := genVec(1024 * 1024)
@@ -61,7 +61,7 @@ func main() {
 	fmt.Printf("Sum: %d\n", sum)
 	/* End of code and function calls to profile */
 
-	/***** Start of profiling code block *****/
+	// ---- START MEM profiing
 	if *memprofile != "" {
 		f, err := os.Create(*memprofile)
 		if err != nil {
@@ -73,5 +73,5 @@ func main() {
 		}
 		f.Close()
 	}
-	/***** End of profiling code block *****/
+	// ---- END MEM profiing
 }
